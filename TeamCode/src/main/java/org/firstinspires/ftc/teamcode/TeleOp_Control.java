@@ -5,6 +5,7 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp(name = "TeleOp")
 @Config
@@ -12,7 +13,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class TeleOp_Control extends OpMode {
     FtcDashboard dashboard = FtcDashboard.getInstance();
     Config_robot robot = new Config_robot();
-    public OnServo launcher = new OnServo();
+//    public OnServo launcher = new OnServo();
     public static int up_pos = 800;
     public static int middle_pos = 400;
     public static int low_pos = 200;
@@ -61,11 +62,11 @@ public class TeleOp_Control extends OpMode {
         robot.zahvat.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
 
         if(gamepad1.y){
-            hight_position();
+            high_position();
         }
 
         if(gamepad1.b){
-            midle_position();
+            mid_position();
         }
 
         if(gamepad1.a){
@@ -76,8 +77,17 @@ public class TeleOp_Control extends OpMode {
             zero_position();
         }
 
-        if(gamepad1.dpad_left){
-            launcher.launch = true;
+//        if(gamepad1.dpad_left){
+//            launcher.launch = true;
+//        }
+        if (gamepad1.right_bumper) {
+            robot.servoP.setPosition(1);
+        }
+        if (gamepad1.left_bumper) {
+            robot.servoP.setPosition(0);
+        }
+        if (gamepad1.right_stick_button) {
+            robot.servoS.setPosition(1);
         }
 
         telemetry.addData("Position rightL: ", robot.rightLift.getCurrentPosition());
@@ -86,7 +96,10 @@ public class TeleOp_Control extends OpMode {
 
     }
 
-    public void stop(){}
+    public void stop(){
+        robot.rightLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
 
 //    void left_lift_regulate(){
 //        int pos_down = robot.leftLift.getCurrentPosition() + 10;
@@ -100,12 +113,12 @@ public class TeleOp_Control extends OpMode {
         robot.rightLift.setTargetPosition(pos_up);
     }
 
-    void hight_position(){
+    void high_position(){
         robot.rightLift.setVelocity(700);
         robot.rightLift.setTargetPosition(up_pos);
     }
 
-    void midle_position(){
+    void mid_position(){
         robot.rightLift.setVelocity(700);
         robot.rightLift.setTargetPosition(middle_pos);
     }
@@ -120,26 +133,26 @@ public class TeleOp_Control extends OpMode {
         robot.rightLift.setTargetPosition(zero_pos);
     }
 
-    class OnServo extends  Thread{
-        boolean launch = false;
-        public void run(){
-            while (!isInterrupted()){
-                if(launch){
-                    if (gamepad1.right_bumper) {
-                        robot.servoP.setPosition(0.5);
-                        telemetry.addData(">", "close");
-                        telemetry.update();
-                    }
-                    if (gamepad1.left_bumper){
-                        robot.servoP.setPosition(1);
-                        telemetry.addData(">", "open");
-                        telemetry.update();
-                    }
-                    if(gamepad1.dpad_right){
-                        robot.servoS.setPosition(0.5);
-                    }
-                }
-            }
-        }
-}
+//    class OnServo extends  Thread{
+//        boolean launch = false;
+//        public void run(){
+//            while (!isInterrupted()){
+//                if(launch){
+//                    if (gamepad1.right_bumper) {
+//                        robot.servoP.setPosition(0.5);
+//                        telemetry.addData(">", "close");
+//                        telemetry.update();
+//                    }
+//                    if (gamepad1.left_bumper){
+//                        robot.servoP.setPosition(1);
+//                        telemetry.addData(">", "open");
+//                        telemetry.update();
+//                    }
+//                    if(gamepad1.dpad_right){
+//                        robot.servoS.setPosition(0.5);
+//                    }
+//                }
+//            }
+//        }
+//}
 }

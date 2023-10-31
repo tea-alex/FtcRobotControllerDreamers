@@ -53,6 +53,8 @@ public class Config_robot {
         leftBackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         rightLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightLift.setTargetPosition(0);
+        rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     public void init_Auto(HardwareMap hMap){
