@@ -14,8 +14,8 @@ public class TeleOp_Control extends OpMode {
     FtcDashboard dashboard = FtcDashboard.getInstance();
     Config_robot robot = new Config_robot();
 //    public OnServo launcher = new OnServo();
-    public static int up_pos = 800;
-    public static int middle_pos = 400;
+    public static int up_pos = 3200;
+    public static int middle_pos = 1600;
     public static int low_pos = 200;
     public static int zero_pos = 10;
 
@@ -60,7 +60,12 @@ public class TeleOp_Control extends OpMode {
         robot.rightBackDrive.setPower(rightBackPower);
 
         robot.zahvat.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
-
+        if(gamepad1.dpad_down) {
+            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 20);
+        }
+        if (gamepad1.dpad_up) {
+            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() + 20);
+        }
         if(gamepad1.y){
             high_position();
         }
@@ -97,8 +102,7 @@ public class TeleOp_Control extends OpMode {
     }
 
     public void stop(){
-        robot.rightLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
 //    void left_lift_regulate(){
