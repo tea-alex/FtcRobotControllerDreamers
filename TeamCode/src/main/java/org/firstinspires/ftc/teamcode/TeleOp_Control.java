@@ -102,6 +102,7 @@ public class TeleOp_Control extends OpMode {
         }
 
         telemetry.addData("Position rightL: ", robot.rightLift.getCurrentPosition());
+        telemetry.addData("Target rightL:",robot.rightLift.getTargetPosition());
 //        telemetry.addData("Position up: ", robot.leftLift.getCurrentPosition());
         telemetry.update();
 
