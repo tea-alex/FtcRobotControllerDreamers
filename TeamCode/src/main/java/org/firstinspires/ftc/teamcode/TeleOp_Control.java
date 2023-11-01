@@ -59,7 +59,9 @@ public class TeleOp_Control extends OpMode {
         robot.leftBackDrive.setPower(leftBackPower);
         robot.rightBackDrive.setPower(rightBackPower);
 
-        robot.zahvat.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+        robot.zahvat.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
+        robot.conv.setPower(robot.zahvat.getPower());
+
         if(gamepad1.dpad_down) {
             robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 20);
         }

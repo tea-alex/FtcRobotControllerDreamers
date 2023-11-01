@@ -16,6 +16,7 @@ public class Config_robot {
     public DcMotorEx rightLift = null;
     public DcMotorEx leftLift = null;
     public DcMotorEx zahvat = null;
+    public DcMotorEx conv = null;
     public Servo servoP = null;
     public Servo servoS = null;
 
@@ -39,6 +40,7 @@ public class Config_robot {
         rightLift = hardM.get(DcMotorEx.class, "rightL");
 //        leftLift = hardM.get(DcMotorEx.class, "leftL");
         zahvat = hardM.get(DcMotorEx.class, "zahvat");
+        conv = hardM.get(DcMotorEx.class,"conv"); //1 control
 
         rightFrontDrive.setDirection(DcMotorEx.Direction.FORWARD);
         leftFrontDrive.setDirection(DcMotorEx.Direction.REVERSE);
