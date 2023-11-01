@@ -96,6 +96,10 @@ public class TeleOp_Control extends OpMode {
         if (gamepad1.right_stick_button) {
             robot.servoS.setPosition(1);
         }
+        if (gamepad1.left_stick_button) {
+            robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        }
 
         telemetry.addData("Position rightL: ", robot.rightLift.getCurrentPosition());
 //        telemetry.addData("Position up: ", robot.leftLift.getCurrentPosition());
