@@ -60,13 +60,15 @@ public class TeleOp_Control extends OpMode {
         robot.rightBackDrive.setPower(rightBackPower);
 
         robot.zahvat.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
-        robot.conv.setPower(robot.zahvat.getPower());
+        robot.conv.setPower(-gamepad1.right_trigger);
 
         if(gamepad1.dpad_down) {
-            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 20);
+            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 30);
+            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() + 30);
         }
         if (gamepad1.dpad_up) {
-            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() + 20);
+            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() + 30);
+            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() - 30);
         }
         if(gamepad1.y){
             high_position();
@@ -99,10 +101,14 @@ public class TeleOp_Control extends OpMode {
         if (gamepad1.left_stick_button) {
             robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             robot.rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.leftLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.leftLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
 
         telemetry.addData("Position rightL: ", robot.rightLift.getCurrentPosition());
         telemetry.addData("Target rightL:",robot.rightLift.getTargetPosition());
+        telemetry.addData("Position leftL: ", robot.leftLift.getCurrentPosition());
+        telemetry.addData("Target leftL:",robot.leftLift.getTargetPosition());
 //        telemetry.addData("Position up: ", robot.leftLift.getCurrentPosition());
         telemetry.update();
 
@@ -112,11 +118,11 @@ public class TeleOp_Control extends OpMode {
         robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-//    void left_lift_regulate(){
-//        int pos_down = robot.leftLift.getCurrentPosition() + 10;
-//        robot.leftLift.setVelocity(500);
- //       robot.leftLift.setTargetPosition(pos_down);
-//    }
+    void left_lift_regulate(){
+        int pos_down = robot.leftLift.getCurrentPosition() + 10;
+        robot.leftLift.setVelocity(500);
+        robot.leftLift.setTargetPosition(pos_down);
+    }
 
     void right_lift_regulate(){
         int pos_up = robot.rightLift.getCurrentPosition() + 10;

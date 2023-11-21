@@ -38,7 +38,7 @@ public class Config_robot {
         rightBackDrive = hardM.get(DcMotorEx.class, "rightRear");
 
         rightLift = hardM.get(DcMotorEx.class, "rightL");
-//        leftLift = hardM.get(DcMotorEx.class, "leftL");
+        leftLift = hardM.get(DcMotorEx.class, "leftL");
         zahvat = hardM.get(DcMotorEx.class, "zahvat");
         conv = hardM.get(DcMotorEx.class,"conv"); //1 control
 
@@ -57,6 +57,10 @@ public class Config_robot {
         rightLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightLift.setTargetPosition(0);
         rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftLift.setTargetPosition(0);
+        leftLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     public void init_Auto(HardwareMap hMap){
