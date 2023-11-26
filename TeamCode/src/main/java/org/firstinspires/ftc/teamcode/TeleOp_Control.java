@@ -64,12 +64,13 @@ public class TeleOp_Control extends OpMode {
 
         if(gamepad1.dpad_down) {
             robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 30);
-            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() + 30);
+            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() - 30);
         }
         if (gamepad1.dpad_up) {
             robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() + 30);
-            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() - 30);
+            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() + 30);
         }
+/*
         if(gamepad1.y){
             high_position();
         }
@@ -85,6 +86,8 @@ public class TeleOp_Control extends OpMode {
         if(gamepad1.x){
             zero_position();
         }
+
+ */
 
 //        if(gamepad1.dpad_left){
 //            launcher.launch = true;

@@ -48,6 +48,7 @@ public class Config_robot {
         leftBackDrive.setDirection(DcMotorEx.Direction.REVERSE);
 
         zahvat.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftLift.setDirection(DcMotorSimple.Direction.REVERSE);
 
         rightFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -83,12 +84,20 @@ public class Config_robot {
         leftBackDrive.setDirection(DcMotorEx.Direction.REVERSE);
 
         zahvat.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftLift.setDirection(DcMotorSimple.Direction.REVERSE);
 
         rightFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightBackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftBackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+
         rightLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightLift.setTargetPosition(0);
+        rightLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftLift.setTargetPosition(0);
+        leftLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 }
