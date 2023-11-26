@@ -200,6 +200,7 @@ public class OpenCV_Contour_3954_Test extends LinearOpMode {
         sleep(7000);
         robot.zahvat.setPower(0);
     }
+    /*
     public void driveStraight(double maxDriveSpeed, double distance, double heading) {
 
         // Ensure that the opmode is still active
@@ -349,4 +350,6 @@ public class OpenCV_Contour_3954_Test extends LinearOpMode {
         // Stop all motion;
         turnMecanum(0, 0.0);
     }
+
+     */
 }
