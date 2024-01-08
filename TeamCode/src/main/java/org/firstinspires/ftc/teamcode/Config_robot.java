@@ -40,7 +40,7 @@ public class Config_robot {
         rightLift = hardM.get(DcMotorEx.class, "rightL");
         leftLift = hardM.get(DcMotorEx.class, "leftL");
         zahvat = hardM.get(DcMotorEx.class, "zahvat");
-        conv = hardM.get(DcMotorEx.class,"conv"); //1 control
+//        conv = hardM.get(DcMotorEx.class,"conv"); //1 control
 
         rightFrontDrive.setDirection(DcMotorEx.Direction.FORWARD);
         leftFrontDrive.setDirection(DcMotorEx.Direction.REVERSE);
