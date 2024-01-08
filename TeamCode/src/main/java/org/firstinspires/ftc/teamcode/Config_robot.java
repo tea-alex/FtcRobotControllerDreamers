@@ -64,7 +64,24 @@ public class Config_robot {
         leftLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
+    public void init_drivetrain(HardwareMap hMap){
+        hardM = hMap;
+
+        leftFrontDrive  = hardM.get(DcMotorEx.class, "LeftFront");
+        leftBackDrive  = hardM.get(DcMotorEx.class, "LeftRear");
+        rightFrontDrive = hardM.get(DcMotorEx.class, "RightFront");
+        rightBackDrive = hardM.get(DcMotorEx.class, "RightRear");
+
+        rightFrontDrive.setDirection(DcMotorEx.Direction.FORWARD);
+        leftFrontDrive.setDirection(DcMotorEx.Direction.REVERSE);
+        rightBackDrive.setDirection(DcMotorEx.Direction.FORWARD);
+        leftBackDrive.setDirection(DcMotorEx.Direction.REVERSE);
+    }
+
     public void init_Auto(HardwareMap hMap){
+
+        BNO055IMU imu = null;
+
 
         hardM = hMap;
         servoP = hMap.get(Servo.class,"servo");
