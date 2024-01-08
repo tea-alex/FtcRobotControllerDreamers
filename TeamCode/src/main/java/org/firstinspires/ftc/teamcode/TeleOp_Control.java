@@ -60,15 +60,15 @@ public class TeleOp_Control extends OpMode {
         robot.rightBackDrive.setPower(rightBackPower);
 
         robot.zahvat.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
-        robot.conv.setPower(-gamepad1.right_trigger + gamepad1.left_trigger);
+//        robot.conv.setPower(-gamepad1.right_trigger + gamepad1.left_trigger);
 
         if(gamepad1.dpad_down) {
-            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 30);
-            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() - 30);
+            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() - 15);
+            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() - 15);
         }
         if (gamepad1.dpad_up) {
-            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() + 30);
-            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() + 30);
+            robot.rightLift.setTargetPosition(robot.rightLift.getTargetPosition() + 15);
+            robot.leftLift.setTargetPosition(robot.leftLift.getTargetPosition() + 15);
         }
 /*
         if(gamepad1.y){
@@ -92,6 +92,7 @@ public class TeleOp_Control extends OpMode {
 //        if(gamepad1.dpad_left){
 //            launcher.launch = true;
 //        }
+
         if (gamepad1.right_bumper) {
             robot.servoP.setPosition(1);
         }
@@ -119,18 +120,7 @@ public class TeleOp_Control extends OpMode {
 
     public void stop(){
         robot.rightLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    }
-
-    void left_lift_regulate(){
-        int pos_down = robot.leftLift.getCurrentPosition() + 10;
-        robot.leftLift.setVelocity(500);
-        robot.leftLift.setTargetPosition(pos_down);
-    }
-
-    void right_lift_regulate(){
-        int pos_up = robot.rightLift.getCurrentPosition() + 10;
-        robot.rightLift.setVelocity(500);
-        robot.rightLift.setTargetPosition(pos_up);
+        robot.leftLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     void high_position(){
