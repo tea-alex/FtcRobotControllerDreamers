@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Config_robot {
-    private BNO055IMU imu = null;      // Control/Expansion Hub IMU
     public DcMotorEx leftFrontDrive = null;
     public DcMotorEx leftBackDrive = null;
     public DcMotorEx rightFrontDrive = null;
